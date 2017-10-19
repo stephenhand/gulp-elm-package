@@ -1,0 +1,9 @@
+{
+  "name": "gulp-elm-package",
+  "version": "0.0.10",
+  "dependencies": {
+    "underscore": "1.8.3",
+    "cross-spawn": "^5.1.0",
+    "gulp-util": "3.0.8"
+  }
+}
