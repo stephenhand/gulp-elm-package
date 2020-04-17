@@ -1,10 +1,12 @@
 "use strict";
 
-const _         = require("underscore")
-    , gutil         = require("gulp-util")
-    , fs            = require("fs")
-    , path          = require("path")
-    , spawn         = require("cross-spawn")
+const _           = require("underscore")
+    , log         = require("fancy-log")
+    , fs          = require("fs")
+    , path        = require("path")
+    , spawn       = require("cross-spawn")
+    , PluginError = require('plugin-error')
+    , c           = require('ansi-colors')
     ;
 
 function elmPackagePath() {
@@ -26,7 +28,7 @@ function runElmPackage(parameters, options, cb){
         if (data.toString().indexOf("[Y/n]")!==-1 && options.noprompt){
             packageProc.stdin.write("y\n");
         }
-        gutil.log(data);
+        log(data);
     });
     packageProc.stderr.on('data', function(data) {
         Buffer.concat([stderrBuffer, new Buffer(data)]);
@@ -34,8 +36,8 @@ function runElmPackage(parameters, options, cb){
     packageProc.on("close", returnCode=> {
         if (!!returnCode) {
             const errorText = stderrBuffer.toString();
-            gutil.log(gutil.colors.red(errorText));
-            cb(new gutil.PluginError("elm-package", `elm-package exited with error '${errorText}' return code '${returnCode}'`));
+            log(c.red(errorText));
+            cb(new PluginError("elm-package", `elm-package exited with error '${errorText}' return code '${returnCode}'`));
         } else {
             cb();
         }

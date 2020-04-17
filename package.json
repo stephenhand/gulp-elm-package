@@ -1,7 +1,7 @@
 {
   "name": "gulp-elm-package",
   "version": "0.0.2",
-  "description":"Gulp plugin for running elm-package install, publish or bump actions",
+  "description": "Gulp plugin for running elm-package install, publish or bump actions",
   "keywords": [
     "gulp",
     "gulpplugin",
@@ -9,8 +9,8 @@
     "elm-package",
     "elm-make"
   ],
-  "author":"Stephen Hand <steve2727@hotmail.com>",
-  "main":"./index.js",
+  "author": "Stephen Hand <steve2727@hotmail.com>",
+  "main": "./index.js",
   "homepage": "https://github.com/stephenhand//gulp-elm-package",
   "repository": {
     "type": "git",
@@ -20,8 +20,9 @@
     "url": "https://github.com/stephenhand/gulp-elm-package/issues"
   },
   "dependencies": {
-    "underscore": "1.8.3",
     "cross-spawn": "^5.1.0",
-    "gulp-util": "3.0.8"
+    "fancy-log": "^1.3.3",
+    "plugin-error": "^1.0.1",
+    "underscore": "1.8.3"
   }
 }
